@@ -1,3 +1,4 @@
+import { StreamingAvailabilityAPI } from "@/app/api/infrastructure/StreamingAvailabilityAPI";
 import { StreamingService } from "@/app/domain/services/StreamingService";
 
 export class StreamingServiceSingleton {
@@ -13,6 +14,13 @@ export class StreamingServiceSingleton {
     }
 
     private static createInstance(): StreamingService {
-        throw new Error("Method not implemented.");
+        // StreamingAvailabilityAPI
+        const apiKey = process.env.RAPIDAPI_STREAMING_AVAILABILITY_API_KEY;
+        if (!apiKey) {
+            throw new Error(
+                "Environment variable 'RAPIDAPI_STREAMING_AVAILABILITY_API_KEY' is not defined"
+            );
+        }
+        return new StreamingAvailabilityAPI(apiKey);
     }
 }
