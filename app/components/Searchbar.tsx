@@ -17,18 +17,16 @@ const Searchbar: React.FC<SearchbarProps> = ({ placeholder = "Search...", onSear
     };
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className='w-full flex items-center'>
             <input
+                className='
+                    text-xl
+                    w-full p-2 px-5 rounded-3xl bg-neutral-900 text-neutral-400 outline-none
+                    focus:bg-neutral-800 hover:bg-neutral-800 transition-colors duration-200'
                 type="text"
                 value={query}
                 onChange={handleChange}
                 placeholder={placeholder}
-                style={{
-                    padding: '8px',
-                    borderRadius: '4px',
-                    border: '1px solid #ccc',
-                    width: '100%',
-                }}
             />
         </div>
     );
